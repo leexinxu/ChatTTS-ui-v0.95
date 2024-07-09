@@ -16,10 +16,10 @@ def select_device(min_memory=2048):
         if free_memory_mb < min_memory:
             logger.warning(f'GPU {selected_gpu} has {round(free_memory_mb, 2)} MB memory left. Switching to CPU.')
             device = torch.device('cpu')
-    elif torch.backends.mps.is_available():
-        # For Apple M1/M2 chips with Metal Performance Shaders
-        logger.info('Apple GPU found, using MPS.')
-        device = torch.device('mps')
+    # elif torch.backends.mps.is_available():
+    #     # For Apple M1/M2 chips with Metal Performance Shaders
+    #     logger.info('Apple GPU found, using MPS.')
+    #     device = torch.device('mps')
     else:
         logger.warning('No GPU found, use CPU instead')
         device = torch.device('cpu')
