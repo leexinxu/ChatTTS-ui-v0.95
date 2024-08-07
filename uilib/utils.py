@@ -163,6 +163,8 @@ def split_text(text_list):
                 haserror=True
                 tmp=num2text(text)
 
+        tmp = tmp.replace("·", "")  # 去掉文本中的·符号，不需要读，加上ChatTTS会读错乱
+
         if len(tmp)>200:
             tmp_res=split_text_by_punctuation(tmp)
             result=result+tmp_res
